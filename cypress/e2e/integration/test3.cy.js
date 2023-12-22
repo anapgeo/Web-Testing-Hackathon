@@ -1,4 +1,4 @@
-describe('example to-do app', () => {
+describe('Search', () => {
   let count1 = 0;
   let count2 = 0;
 
