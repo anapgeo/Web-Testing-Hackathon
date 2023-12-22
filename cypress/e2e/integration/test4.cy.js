@@ -1,4 +1,4 @@
-describe('example to-do app', () => {
+describe('Check discount prices', () => {
     beforeEach(() => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise#/offers');
       });
