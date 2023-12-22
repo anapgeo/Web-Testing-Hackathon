@@ -68,7 +68,7 @@ describe('US1: Add Products in the Cart', () => {
           }
         });
       });
-      it(' products to Cart ', () => {
+      it(' Wrong quantity bug test ', () => {
         
         cy.get('.products') // Adjust the timeout as needed
         .should('have.length.gt', 0) // Ensure at least one product container is present
