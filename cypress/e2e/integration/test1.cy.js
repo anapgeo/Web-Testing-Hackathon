@@ -1,13 +1,13 @@
 
 
 
-describe('example to-do app', () => {
+describe('US1: Add Products in the Cart', () => {
     beforeEach(() => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise#/');
       });
     
-      it('Add  all products to Cart', () => {
-        
+      it('Add all products to Cart', () => {
+        var totalPrice = 0;
         cy.get('.products') // Adjust the timeout as needed
         .should('have.length.gt', 0) // Ensure at least one product container is present
         .wait(2000); // Adjust the wait time as needed
@@ -21,13 +21,24 @@ describe('example to-do app', () => {
             cy.get('.products .product').eq(productIndex)
               .within(() => {
                 // Extract information about the product
-             
-    
+                
+                cy.get('.product-price').then(($0) => {
+                  
+                  totalPrice= totalPrice + parseInt($0.text())
+                  cy.log(totalPrice)
+                })      
+                
+                
                 // Interact with the product (e.g., click the "ADD TO CART" button)
                 cy.get('.product-action button').click();
               });
           }
         });
+        cy.get('.cart-info').find('tr:contains("Price") strong').invoke('text').then((price) => {
+          // Log the retrieved price value
+          cy.log(`Price: ${price}`);
+          expect(parseInt(price)).to.equal(totalPrice);
+        })
       });
       
       it('Add  multiple products to Cart ', () => {

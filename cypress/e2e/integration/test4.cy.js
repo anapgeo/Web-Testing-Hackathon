@@ -6,7 +6,7 @@ describe('example to-do app', () => {
 
       it('Top Deals test', () => {
        // Get all <li> elements within the <ul>, excluding the 2nd and last before the last
-    cy.get('ul.pagination.pull-right     li:not(:first-child):not(:nth-child(1)):not(:nth-child(2)):not(:last-child):not(:nth-last-child(2))').each(($li, index, $lis) => {
+    cy.get('ul.pagination.pull-right  li:not(:first-child):not(:nth-child(1)):not(:nth-child(2)):not(:last-child):not(:nth-last-child(2))').each(($li, index, $lis) => {
      cy.get($li).find('a').click()
      cy.get('table.table-bordered tbody tr').each(($row, index, $rows) => {
         try {
