@@ -6,7 +6,7 @@ describe('US1: Add Products in the Cart', () => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise#/');
       });
     
-      it('Add  all products to Cart', () => {
+      it('Verify Adding All Products to Cart', () => {
         var totalPrice = 0;
         cy.get('.products') // Adjust the timeout as needed
         .should('have.length.gt', 0) // Ensure at least one product container is present
@@ -41,7 +41,7 @@ describe('US1: Add Products in the Cart', () => {
         })
       });
       
-      it('Add  multiple products to Cart ', () => {
+      it('Verify Adding Multiple Random Products to Cart', () => {
         
         cy.get('.products') // Adjust the timeout as needed
         .should('have.length.gt', 0) // Ensure at least one product container is present
@@ -68,7 +68,7 @@ describe('US1: Add Products in the Cart', () => {
           }
         });
       });
-      it(' Wrong quantity bug test ', () => {
+      it('Verify Adding Specific Products to Cart', () => {
         
         cy.get('.products') // Adjust the timeout as needed
         .should('have.length.gt', 0) // Ensure at least one product container is present
