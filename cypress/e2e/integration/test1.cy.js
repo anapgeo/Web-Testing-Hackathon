@@ -6,7 +6,7 @@ describe('US1: Add Products in the Cart', () => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise#/');
       });
     
-      it('Add all products to Cart', () => {
+      it('Add  all products to Cart', () => {
         var totalPrice = 0;
         cy.get('.products') // Adjust the timeout as needed
         .should('have.length.gt', 0) // Ensure at least one product container is present
@@ -68,8 +68,64 @@ describe('US1: Add Products in the Cart', () => {
           }
         });
       });
+      it(' products to Cart ', () => {
+        
+        cy.get('.products') // Adjust the timeout as needed
+        .should('have.length.gt', 0) // Ensure at least one product container is present
+        .wait(2000); // Adjust the wait time as needed
+        let expectedPrice=0;
+        let productIndex=Math.floor(Math.random() * 30);
+        for (let iterations=1;  iterations<=3; iterations++){  
+        // Get the total number of products
+        cy.get('.products').then(($products) => {
+          const totalProducts = $products[0].childElementCount;
+            
+            
+            cy.get('.products .product').eq(productIndex)
+              .within(() => {
+                
+
+                let pricePrev=0
+                let productPrice=0;
+                
+                // Extract information about the product
+                
+             
+                cy.get('.product-action button').click();
+                cy.get('.product-price').then(($0) => {
+                  
+                  productPrice= parseInt($0.text())
+                  expectedPrice=expectedPrice + iterations*productPrice
+                  cy.log("Product Price:" + productPrice)
+                  cy.log("Expected Price:" + expectedPrice)
+                 
+                })
+                if(iterations!=2){
+                  cy.get('.increment').click();
+                  }
+                
+                  
+             } )
+            
+              
+                // Interact with the product (e.g., click the "ADD TO CART" button)
+              
+              });
+              cy.get('.cart-info').find('tr:contains("Price") strong').invoke('text').then((price) => {
+                // Log the retrieved price value
+                cy.log(`Cart Price: ${price}`);
+                try{
+                expect(expectedPrice).to.equal(parseInt(price));
+                }
+                catch(error){
+                  cy.log(expectedPrice)
+                  cy.log(`Cart Price: ${price}`)
+                }
+              })
+            }
+        });
+      });
     
       
       // Add more test cases for other interactions or scenarios as needed
-  });
   

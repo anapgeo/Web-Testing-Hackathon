@@ -1,10 +1,10 @@
-describe('example to-do app', () => {
+describe('US5: Use Promo Codes/Coupons for an Order', () => {
     beforeEach(() => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise#/');
       });
 
 
-      it('Promo Code Test', () => {
+      it('Verify Promo Code Application', () => {
              
     cy.get('.products') // Adjust the timeout as needed
     .should('have.length.gt', 0) // Ensure at least one product container is present
