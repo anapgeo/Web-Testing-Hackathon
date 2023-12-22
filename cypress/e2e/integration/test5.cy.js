@@ -2,8 +2,10 @@ describe('example to-do app', () => {
     beforeEach(() => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise#/');
       });
-it('Complete order', () => {
-        
+
+
+      it('Promo Code Test', () => {
+             
     cy.get('.products') // Adjust the timeout as needed
     .should('have.length.gt', 0) // Ensure at least one product container is present
     .wait(2000); // Adjust the wait time as needed
@@ -27,17 +29,22 @@ it('Complete order', () => {
       .within(() => {
         cy.get('.action-block button').click(); 
       });
-      cy.get('button').contains('Place Order').click();
 
-    // Select a country from the dropdown
-    cy.get('select').select('United States');
+      cy.get('.promoCode').type('Test')
+      cy.get('.promoBtn').click().wait(5000)
 
-    // Check the "Agree to Terms & Conditions" checkbox
-    cy.get('.chkAgree').check();
+      cy.get('.promoWrapper').within(()=>{
+        cy.get('span').should('be.visible');
+      
+        cy.get('span').should('have.text',
+            "Invalid code ..!"
+          )
+      });      
+    
 
-    // Click the "Proceed" button
-    cy.get('button').contains('Proceed').click();
+      })
+    
+    
 
-    });
-  });
-});
+})
+})
