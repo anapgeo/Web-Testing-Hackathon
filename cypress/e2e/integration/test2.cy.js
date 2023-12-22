@@ -1,8 +1,8 @@
-describe('example to-do app', () => {
+describe('US2: Complete order for the products in the cart', () => {
     beforeEach(() => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise#/');
       });
-it('Complete order', () => {
+it('Complete order with country', () => {
         
     cy.get('.products') // Adjust the timeout as needed
     .should('have.length.gt', 0) // Ensure at least one product container is present

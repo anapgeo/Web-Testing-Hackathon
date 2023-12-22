@@ -1,10 +1,10 @@
-describe('Check discount prices', () => {
+describe('US4: Top Deals', () => {
     beforeEach(() => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise#/offers');
       });
 
 
-      it('Top Deals test', () => {
+      it('Test discount prices', () => {
        // Get all <li> elements within the <ul>, excluding the 2nd and last before the last
     cy.get('ul.pagination.pull-right  li:not(:first-child):not(:nth-child(1)):not(:nth-child(2)):not(:last-child):not(:nth-last-child(2))').each(($li, index, $lis) => {
      cy.get($li).find('a').click()

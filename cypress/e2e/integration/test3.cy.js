@@ -1,4 +1,4 @@
-describe('Search', () => {
+describe('US3: Search for products', () => {
   let count1 = 0;
   let count2 = 0;
 
@@ -7,6 +7,7 @@ describe('Search', () => {
   });
 
   it('Search Test', () => {
+    
     const searchText = "Br";
 
     // Manually search for products
